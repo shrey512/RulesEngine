@@ -1,0 +1,38 @@
+[
+  {
+    "WorkflowName": "GeneralEligibilityChain",
+    "Rules": [
+      {
+        "RuleName": "GeneralEligibility",
+        "SuccessEvent": "Member is eligible for standard plan",
+        "ErrorMessage": "One or more eligibility rules failed.",
+        "ErrorType": "Error",
+        "RuleExpressionType": "LambdaExpression",
+        "Expression": "ExternalInputFunctions.ResidenceStateCheck(member.stateCode,\"IL,WV,TX\") == true",
+        "Actions": {
+          "OnSuccess": {
+            "Name": "OutputExpression",
+            "Context": {
+              "Expression": "ExternalInputFunctions.SalaryCodeCheck(member.extraCode5, \"A,A2,H,N,L,F,I\") == true AND (member.annualSalary < 312500 OR ExternalInputFunctions.ExtraIntCheck(member.extraInt1, \"2,5\"))"
+            }
+          },
+          "OnFailure": {
+            "Name": "EvaluateRule",
+            "Context": {
+              "WorkflowName": "GeneralEligibilityChain",
+              "ruleName": "PlanCancerMemography"
+            }
+          }
+        }
+      },
+      {
+        "RuleName": "PlanCancerMemography",
+        "SuccessEvent": "Member is eligibile for Early Cancer Risk Review + Mammography",
+        "ErrorMessage": "One or more adjust rules failed.",
+        "ErrorType": "Error",
+        "RuleExpressionType": "LambdaExpression",
+        "Expression": "member.age >=50 AND dependent.gender == \"F\" AND dependent.age > 39"
+      }
+    ]
+  }
+]
