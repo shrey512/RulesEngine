@@ -1,0 +1,23 @@
+[
+  {
+    "WorkflowName": "EligibilityPlus",
+    "Rules": [
+      {
+        "RuleName": "8 x Salary",
+        "SuccessEvent": "Eligible for 8 x Salary Plan",
+        "ErrorMessage": "One or more eligibility rules failed.",
+        "ErrorType": "Error",
+        "RuleExpressionType": "LambdaExpression",
+        "Expression": "ExternalInputFunctions.SalaryCodeCheck(member.extraCode5, \"A,A2,H,N,L,F,I\") == true AND (member.annualSalary < 312500 OR ExternalInputFunctions.ExtraIntCheck(member.extraInt1, \"2,5\"))"
+      },
+      {
+        "RuleName": "8 x Salary Capped",
+        "SuccessEvent": "Eligible for 8 x Salary Capped Plan",
+        "ErrorMessage": "One or more eligibility rules failed.",
+        "ErrorType": "Error",
+        "RuleExpressionType": "LambdaExpression",
+        "Expression": "ExternalInputFunctions.SalaryCodeCheck(member.extraCode5, \"A,A2,H,N,L,F,I\") == true AND (member.annualSalary >= 312500 AND ExternalInputFunctions.ExtraIntCheck(member.extraInt1, \"0,1,6,3\"))"
+      }
+    ]
+  }
+]

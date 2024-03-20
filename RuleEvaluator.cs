@@ -90,13 +90,13 @@ namespace RuleEngineSaple
             {
                 if (evalItem.IsSuccess)
                 {
-                    memberEligibleFor += evalItem.Rule.RuleName + ",";
+                    memberEligibleFor += evalItem.Rule.SuccessEvent + ",";
                 }
             });
 
             if (!string.IsNullOrEmpty(memberEligibleFor))
             {
-                Console.WriteLine("Member is eligble for the following plans : " + memberEligibleFor);
+                Console.WriteLine(memberEligibleFor);
             }
             else
             {
@@ -141,13 +141,13 @@ namespace RuleEngineSaple
             {
                 if (evalItem.IsSuccess)
                 {
-                    memberEligibleFor += evalItem.Rule.RuleName + ",";
+                    memberEligibleFor += evalItem.Rule.SuccessEvent + ",";
                 }
             });
 
             if (!string.IsNullOrEmpty(memberEligibleFor))
             {
-                Console.WriteLine("Member is eligble for the following plans : " + memberEligibleFor);
+                Console.WriteLine(memberEligibleFor);
             }
             else
             {
@@ -207,7 +207,7 @@ namespace RuleEngineSaple
 
             if (!string.IsNullOrEmpty(memberEligibleFor))
             {
-                Console.WriteLine( memberEligibleFor);
+                Console.WriteLine(memberEligibleFor);
             }
             else
             {

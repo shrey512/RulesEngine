@@ -2,7 +2,7 @@
 using RuleEngineSaple;
 
 //Sample rule
-RuleEvaluator.ExecuteDiscount();
+//RuleEvaluator.ExecuteDiscount();
 
 //Eligiblity 
 RuleEvaluator.ExecuteEligibility();
