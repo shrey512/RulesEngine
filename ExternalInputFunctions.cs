@@ -13,7 +13,7 @@ namespace RuleEngineSaple
         {
             if (string.IsNullOrEmpty(extraCode5Value)) return false;
 
-            if(string.IsNullOrEmpty(extraCodeAllowedList)) return false;
+            if (string.IsNullOrEmpty(extraCodeAllowedList)) return false;
 
             string[] extraCodeAllowedListSplit = extraCodeAllowedList.Split(',');
 
@@ -30,7 +30,7 @@ namespace RuleEngineSaple
             bool result = false;
             int value = 0;
 
-            foreach(string x in extraInt1AllowedListSplit)
+            foreach (string x in extraInt1AllowedListSplit)
             {
                 if (int.TryParse(x, out value) && value == extraInt1Value)
                 {
@@ -52,6 +52,26 @@ namespace RuleEngineSaple
             string[] allowedStateCodeList = allowedStateCodes.Split(',');
 
             return allowedStateCodeList.Contains(stateCode);
+        }
+
+        public static decimal EvaluateCredit(decimal frozenSalary, string managerEmployeeNo, string fullOrPartTimeCode)
+        {
+            if (!string.IsNullOrEmpty(managerEmployeeNo) && managerEmployeeNo != "3C") return 250;
+
+            if (!string.IsNullOrEmpty(fullOrPartTimeCode) && fullOrPartTimeCode == "PT") return 250;
+
+            if (!string.IsNullOrEmpty(managerEmployeeNo) && managerEmployeeNo == "3A") return 250;
+
+            if (!string.IsNullOrEmpty(managerEmployeeNo) && managerEmployeeNo == "3I") return 250;
+
+            const decimal FACTOR = 0.142062M;
+            if (!string.IsNullOrEmpty(managerEmployeeNo) && managerEmployeeNo == "3C" && frozenSalary > 0) return frozenSalary * FACTOR;
+
+            if (!string.IsNullOrEmpty(managerEmployeeNo) && managerEmployeeNo == "3C" && frozenSalary == 0) return 0;
+
+            if (frozenSalary < 300000) return (frozenSalary * FACTOR) + 250;
+
+            return 250 + (300000 * FACTOR);
         }
 
     }

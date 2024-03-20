@@ -4,11 +4,14 @@ using RuleEngineSaple;
 //Sample rule
 //RuleEvaluator.ExecuteDiscount();
 
-//Eligiblity 
+//Eligiblity
 RuleEvaluator.ExecuteEligibility();
 
 //Eligiblity Plus
 RuleEvaluator.ExecuteEligibilityPlus();
 
-//Eligiblity Plus
+//Chaining rule
 RuleEvaluator.ExecuteEligibilityChain();
+
+//Rule with actions
+RuleEvaluator.ExecuteRuleWithAction();

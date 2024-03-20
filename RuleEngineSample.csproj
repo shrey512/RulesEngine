@@ -12,6 +12,7 @@
     <None Remove="rules\eligibility.json" />
     <None Remove="rules\eligibilitychain.json" />
     <None Remove="rules\eligibilityplus.json" />
+    <None Remove="rules\rulewithaction.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +26,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="rules\eligibilityplus.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rules\rulewithaction.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

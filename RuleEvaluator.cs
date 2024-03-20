@@ -12,6 +12,8 @@ using RulesEngine.Models;
 using RulesEngine.Extensions;
 using System.Diagnostics.Metrics;
 using RulesEngine.HelperFunctions;
+using RulesEngine.Actions;
+using RuleEngineSample.CustomRuleActions;
 
 
 namespace RuleEngineSaple
@@ -195,6 +197,65 @@ namespace RuleEngineSaple
             List<RuleParameter> ruleParams = new List<RuleParameter> { member, dependent };
 
             var workflowResult = await bre.ExecuteActionWorkflowAsync("GeneralEligibilityChain", "GeneralEligibility", ruleParams.ToArray());
+            string memberEligibleFor = string.Empty;
+
+            foreach (var result in workflowResult.Results)
+            {
+                if (result.IsSuccess)
+                {
+                    memberEligibleFor += result.Rule.SuccessEvent + ",";
+                }
+            }
+
+            if (!string.IsNullOrEmpty(memberEligibleFor))
+            {
+                Console.WriteLine(memberEligibleFor);
+            }
+            else
+            {
+                Console.WriteLine("Member is not eligible");
+            }
+        }
+
+        public async static void ExecuteRuleWithAction()
+        {
+            Console.WriteLine("Executing the rule with action.........");
+
+            //read the json rule
+            string jsonRuleExpression = File.ReadAllText(@"./rules/rulewithaction.json");
+
+            //instantiate the rules engine 
+            List<Workflow> workflow = JsonConvert.DeserializeObject<List<Workflow>>(jsonRuleExpression);
+
+            //define the custom setting for the rule where we need the external input functions to be registered
+            var reSettings = new ReSettings
+            {
+                CustomTypes = new Type[] { typeof(ExternalInputFunctions) },
+                CustomActions = new Dictionary<string, Func<ActionBase>>{
+                                          {"CreditRuleAction", () => new CreditRuleAction() }
+                                      }
+            };
+
+            RulesEngine.RulesEngine bre = new RulesEngine.RulesEngine(workflow.ToArray(), reSettings);
+
+            //determine the input -- this can be constants, LOVs, nested lists, output from SPs / Funcs, Scalar values, aggregate values etc. 
+            var input1 = new
+            {
+                name = "John Doe",
+                age = 52,
+                stateCode = "IL",
+                extraCode5 = "A2",
+                annualSalary = 300000,
+                extraInt1 = 3,
+                forzenSalary = 2500,
+                managerEmployeeNo = "3A",
+                fullOrPartTimeCode = "FT"
+            };
+            RuleParameter member = new RuleParameter("member", input1);
+
+            List<RuleParameter> ruleParams = new List<RuleParameter> { member };
+
+            var workflowResult = await bre.ExecuteActionWorkflowAsync("RuleWithAction", "ComplexRuleWithAction", ruleParams.ToArray());
             string memberEligibleFor = string.Empty;
 
             foreach (var result in workflowResult.Results)

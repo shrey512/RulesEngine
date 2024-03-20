@@ -24,3 +24,4 @@ C:\Users\aymitra\source\repos\rulesenginesample\RuleEngineSample\RuleEngineSampl
 C:\Users\aymitra\source\repos\rulesenginesample\RuleEngineSample\RuleEngineSample\obj\Debug\net8.0\RuleEngineSample.genruntimeconfig.cache
 C:\Users\aymitra\source\repos\rulesenginesample\RuleEngineSample\RuleEngineSample\obj\Debug\net8.0\ref\RuleEngineSample.dll
 C:\Users\aymitra\source\repos\rulesenginesample\RuleEngineSample\RuleEngineSample\obj\Debug\net8.0\RuleEngineSample.sourcelink.json
+C:\Users\aymitra\source\repos\rulesenginesample\RuleEngineSample\RuleEngineSample\bin\Debug\net8.0\rules\rulewithaction.json

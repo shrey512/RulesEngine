@@ -1,0 +1,23 @@
+[
+  {
+    "WorkflowName": "RuleWithAction",
+    "Rules": [
+      {
+        "RuleName": "ComplexRuleWithAction",
+        "SuccessEvent": "Rule with Action Evaluated",
+        "ErrorMessage": "One or more eligibility rules failed.",
+        "ErrorType": "Error",
+        "RuleExpressionType": "LambdaExpression",
+        "Expression": "ExternalInputFunctions.EvaluateCredit(member.forzenSalary, member.managerEmployeeNo, member.fullOrPartTimeCode) > 100",
+        "Actions": {
+          "OnSuccess": {
+            "Name": "CreditRuleAction",
+            "Context": {
+              "customContextInput": "Action for Credit Rule"
+            }
+          }
+        }
+      }
+    ]
+  }
+]
