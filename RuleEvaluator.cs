@@ -45,7 +45,7 @@ namespace RuleEngineSaple
 
             resultList.OnSuccess((eventName) =>
             {
-                discountOffered = $"Discount offered is {eventName} % over MRP.";
+                discountOffered = eventName;
             });
 
             resultList.OnFail(() =>

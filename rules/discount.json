@@ -4,7 +4,7 @@
     "Rules": [
       {
         "RuleName": "GiveDiscount10",
-        "SuccessEvent": "10",
+        "SuccessEvent": "You have been offered 10% discount on MRP",
         "ErrorMessage": "One or more adjust rules failed.",
         "ErrorType": "Error",
         "RuleExpressionType": "LambdaExpression",
@@ -12,7 +12,7 @@
       },
       {
         "RuleName": "GiveDiscount20",
-        "SuccessEvent": "20",
+        "SuccessEvent": "You have been offered 20% discount on MRP",
         "ErrorMessage": "One or more adjust rules failed.",
         "ErrorType": "Error",
         "RuleExpressionType": "LambdaExpression",

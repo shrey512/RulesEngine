@@ -1,4 +1,5 @@
-﻿using RulesEngine.Actions;
+﻿using RuleEngineSample.RuleInputs;
+using RulesEngine.Actions;
 using RulesEngine.Models;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,8 @@ namespace RuleEngineSample.CustomRuleActions
 
             if (ruleParameters != null && ruleParameters.Length > 0)
             {
-                var memberParamValue = ruleParameters[0].Value;
-                Console.WriteLine("Member parameter value is {0}", memberParamValue);
+                MemberInput memberParamValue = (MemberInput)ruleParameters[0].Value;
+                Console.WriteLine("Member parameter name value is {0}.", memberParamValue.name);
             }
 
             return true;
