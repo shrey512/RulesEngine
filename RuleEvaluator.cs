@@ -14,12 +14,19 @@ using System.Diagnostics.Metrics;
 using RulesEngine.HelperFunctions;
 using RulesEngine.Actions;
 using RuleEngineSample.CustomRuleActions;
-
+using RuleEngineSample.Data;
 
 namespace RuleEngineSaple
 {
     internal static class RuleEvaluator
     {
+        public class Inputdata
+        {
+            public string? name { get; set; }
+            public int? age { get; set; }
+            public string? gender { get; set; }
+        }
+
         public static void ExecuteDiscount()
         {
             Console.WriteLine("Executing the discount rule.........");
@@ -58,6 +65,11 @@ namespace RuleEngineSaple
 
         public static void ExecuteEligibility()
         {
+            
+            string connectionstring = "Server=(localdb)\\mssqllocaldb;Database=RulesEngineEditorDB;Integrated Security=true;";
+            RuleEngineDBManager dBManager = new RuleEngineDBManager(connectionstring);
+
+            List<Demographic> demographics = dBManager.Getdemographic();
             Console.WriteLine("Executing the eligibility rule.........");
 
             //read the json rule
@@ -68,20 +80,42 @@ namespace RuleEngineSaple
             RulesEngine.RulesEngine bre = new RulesEngine.RulesEngine(workflow.ToArray(), null);
 
             //determine the input -- this can be constants, LOVs, nested lists, output from SPs / Funcs, Scalar values, aggregate values etc. 
-            var input1 = new
+            
+
+            var input1 = new Inputdata
             {
-                name = "Jane Doe",
-                age = 48
+                name = null,
+                age = null
             };
+
+            foreach (Demographic demographic in demographics)
+            {
+                if (demographic.Id == 1)
+                {
+                    input1.name = demographic.First_Name + " " + demographic.Last_Name;
+                    input1.age = demographic.Age;
+                }
+            }
             RuleParameter member = new RuleParameter("member", input1);
 
 
-            var input2 = new
+            var input2 = new Inputdata
             {
-                name = "John Doe",
-                gender = "M",
-                age = 42
+                name = null,
+                gender = null,
+                age = null
             };
+
+            foreach (Demographic demographic in demographics)
+            {
+                if (demographic.Id == 2)
+                {
+                    input2.name = demographic.First_Name + " " + demographic.Last_Name;
+                    input2.age = demographic.Age;
+                    input2.gender = demographic.Gender;
+                }
+            }
+
             RuleParameter dependent = new RuleParameter("dependent", input2);
 
 

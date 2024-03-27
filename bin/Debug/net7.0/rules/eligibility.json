@@ -1,0 +1,39 @@
+[
+  {
+    "WorkflowName": "Eligibility",
+    "Rules": [
+      {
+        "RuleName": "Early Cancer Risk Revew",
+        "SuccessEvent": "Eligible for Early Cancer Risk Revew",
+        "ErrorMessage": "One or more eligibility rules failed.",
+        "ErrorType": "Error",
+        "RuleExpressionType": "LambdaExpression",
+        "Expression": "member.age > 39"
+      },
+      {
+        "RuleName": "Early Cancer Risk Review + Premier",
+        "SuccessEvent": "Eligibile for Early Cancer Risk Review + Premier",
+        "ErrorMessage": "One or more adjust rules failed.",
+        "ErrorType": "Error",
+        "RuleExpressionType": "LambdaExpression",
+        "Expression": "dependent.age > 39"
+      },
+      {
+        "RuleName": "Premier + Mammography",
+        "SuccessEvent": "Eligibile for Premier + Mammography",
+        "ErrorMessage": "One or more adjust rules failed.",
+        "ErrorType": "Error",
+        "RuleExpressionType": "LambdaExpression",
+        "Expression": "dependent.gender == \"F\" AND dependent.age > 39"
+      },
+      {
+        "RuleName": "Early Cancer Risk Review + Mammography",
+        "SuccessEvent": "Eligibile for Early Cancer Risk Review + Mammography",
+        "ErrorMessage": "One or more adjust rules failed.",
+        "ErrorType": "Error",
+        "RuleExpressionType": "LambdaExpression",
+        "Expression": "member.age >=50 AND dependent.gender == \"F\" AND dependent.age > 39"
+      }
+    ]
+  }
+]
