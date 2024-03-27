@@ -1,32 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aymitra\\source\\repos\\rulesenginesample\\RuleEngineSample\\RuleEngineSample\\RuleEngineSample.csproj": {}
+    "C:\\Users\\shreyansjain5\\source\\repos\\SJ\\RulesEngineSample\\RuleEngineSample.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aymitra\\source\\repos\\rulesenginesample\\RuleEngineSample\\RuleEngineSample\\RuleEngineSample.csproj": {
+    "C:\\Users\\shreyansjain5\\source\\repos\\SJ\\RulesEngineSample\\RuleEngineSample.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aymitra\\source\\repos\\rulesenginesample\\RuleEngineSample\\RuleEngineSample\\RuleEngineSample.csproj",
+        "projectUniqueName": "C:\\Users\\shreyansjain5\\source\\repos\\SJ\\RulesEngineSample\\RuleEngineSample.csproj",
         "projectName": "RuleEngineSample",
-        "projectPath": "C:\\Users\\aymitra\\source\\repos\\rulesenginesample\\RuleEngineSample\\RuleEngineSample\\RuleEngineSample.csproj",
-        "packagesPath": "C:\\Users\\aymitra\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aymitra\\source\\repos\\rulesenginesample\\RuleEngineSample\\RuleEngineSample\\obj\\",
+        "projectPath": "C:\\Users\\shreyansjain5\\source\\repos\\SJ\\RulesEngineSample\\RuleEngineSample.csproj",
+        "packagesPath": "C:\\Users\\shreyansjain5\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\shreyansjain5\\source\\repos\\SJ\\RulesEngineSample\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\aymitra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shreyansjain5\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {}
           }
         },
@@ -34,16 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "Newtonsoft.Json": {
               "target": "Package",
@@ -70,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
