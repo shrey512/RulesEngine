@@ -1,9 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Microsoft.IdentityModel.Tokens;
 using RuleEngineSample;
 using RuleEngineSample.Data;
 using RuleEngineSaple;
-
-
 
 ////Sample rule
 //RuleEvaluator.ExecuteDiscount();
@@ -24,15 +23,37 @@ namespace RuleEngineSample
 {
     class RuleOrchestrator
     {
+        private readonly RulesEngineDbContext _context;
+        public RuleOrchestrator(RulesEngineDbContext rulesEngineDbContext)
+        {
+           _context = rulesEngineDbContext;
+        }
+
         static void Main(string[] args)
         {
+            //Using ADO.NET i.e RuleEngineDBManager
             string connectionstring = "Server=(localdb)\\mssqllocaldb;Database=RulesEngineEditorDB;Integrated Security=true;";
             RuleEngineDBManager dBManager = new RuleEngineDBManager(connectionstring);
+            RulesEngineDbContext rulesEngineDbContext = new RulesEngineDbContext();
             //dBManager.displayworkflowtable();
             //dBManager.displayruletable();
             dBManager.displaydemographic();
             dBManager.Getdemographic();
 
+
+
+            //Using EF i.e. RulesEngoneDbContext
+            if(rulesEngineDbContext != null)
+            {
+                var demographic = rulesEngineDbContext.GetdemographicEF();
+                foreach (var item in demographic)
+                {
+                    Console.WriteLine(item.First_Name);
+                }
+            }
+
+
+            //Rules Evaluation----------------------------------------------------------------------------------------
             RuleEvaluationService service1 = new RuleEvaluationService(RuleLibrary.DiscountRule);
             service1.EvaluateRule();
 
@@ -52,6 +73,6 @@ namespace RuleEngineSample
             service5.EvaluateRuleWithActionFlow("ComplexRuleWithAction");
         }
 
-
+        
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shreyansjain5\\source\\repos\\SJ\\RulesEngineSample\\RuleEngineSample.csproj": {}
+    "C:\\Users\\shreyansjain5\\Source\\Repos\\SJ\\RulesEngineSample\\RuleEngineSample.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shreyansjain5\\source\\repos\\SJ\\RulesEngineSample\\RuleEngineSample.csproj": {
+    "C:\\Users\\shreyansjain5\\Source\\Repos\\SJ\\RulesEngineSample\\RuleEngineSample.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shreyansjain5\\source\\repos\\SJ\\RulesEngineSample\\RuleEngineSample.csproj",
+        "projectUniqueName": "C:\\Users\\shreyansjain5\\Source\\Repos\\SJ\\RulesEngineSample\\RuleEngineSample.csproj",
         "projectName": "RuleEngineSample",
-        "projectPath": "C:\\Users\\shreyansjain5\\source\\repos\\SJ\\RulesEngineSample\\RuleEngineSample.csproj",
+        "projectPath": "C:\\Users\\shreyansjain5\\Source\\Repos\\SJ\\RulesEngineSample\\RuleEngineSample.csproj",
         "packagesPath": "C:\\Users\\shreyansjain5\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shreyansjain5\\source\\repos\\SJ\\RulesEngineSample\\obj\\",
+        "outputPath": "C:\\Users\\shreyansjain5\\Source\\Repos\\SJ\\RulesEngineSample\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\shreyansjain5\\AppData\\Roaming\\NuGet\\NuGet.Config",
