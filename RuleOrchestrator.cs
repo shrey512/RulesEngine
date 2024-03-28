@@ -31,7 +31,7 @@ namespace RuleEngineSample
 
         static void Main(string[] args)
         {
-            //Using ADO.NET i.e RuleEngineDBManager
+            //Fetching Data Using ADO.NET i.e RuleEngineDBManager
             string connectionstring = "Server=(localdb)\\mssqllocaldb;Database=RulesEngineEditorDB;Integrated Security=true;";
             RuleEngineDBManager dBManager = new RuleEngineDBManager(connectionstring);
             RulesEngineDbContext rulesEngineDbContext = new RulesEngineDbContext();
@@ -41,8 +41,7 @@ namespace RuleEngineSample
             dBManager.Getdemographic();
 
 
-
-            //Using EF i.e. RulesEngoneDbContext
+            //Fetching Data Using EF i.e. RulesEngineDbContext
             if(rulesEngineDbContext != null)
             {
                 var demographic = rulesEngineDbContext.GetdemographicEF();
@@ -52,19 +51,15 @@ namespace RuleEngineSample
                 }
             }
 
-
             //Rules Evaluation----------------------------------------------------------------------------------------
             RuleEvaluationService service1 = new RuleEvaluationService(RuleLibrary.DiscountRule);
             service1.EvaluateRule();
 
-
             RuleEvaluationService service2 = new RuleEvaluationService(RuleLibrary.ElgibilityRule);
             service2.EvaluateRule();
 
-
             RuleEvaluationService service3 = new RuleEvaluationService(RuleLibrary.ElgibilityPlusRule);
             service3.EvaluateRule();
-
 
             RuleEvaluationService service4 = new RuleEvaluationService(RuleLibrary.EligibilityChain);
             service4.EvaluateRuleWithActionFlow("GeneralEligibility");
@@ -72,7 +67,5 @@ namespace RuleEngineSample
             RuleEvaluationService service5 = new RuleEvaluationService(RuleLibrary.RuleWithAction);
             service5.EvaluateRuleWithActionFlow("ComplexRuleWithAction");
         }
-
-        
     }
 }

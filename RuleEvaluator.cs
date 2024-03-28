@@ -140,7 +140,6 @@ namespace RuleEngineSaple
             }
         }
 
-
         public static void ExecuteEligibilityPlus()
         {
             Console.WriteLine("Executing the eligibility plus rule.........");
