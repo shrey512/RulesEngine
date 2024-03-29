@@ -28,30 +28,7 @@ namespace RuleEngineSample.Data
             return connection;  
         }
 
-        //public List<Rule> GetRules()
-        //{
-        //    List<Rule> rules = new List<Rule>();
-        //    using (SqlConnection connection = OpenConnection())
-        //    {
-        //        SqlCommand command = new SqlCommand("SELECT * FROM [rule]", connection);
-        //        SqlDataReader reader = command.ExecuteReader();
-
-        //        while (reader.Read())
-        //        {
-        //            Rule rule = new Rule
-        //            {
-        //                RuleName = reader["RuleName"].ToString(),
-        //                SuccessEvent = reader["SuccessEvent"].ToString(),
-        //                ErrorMessage = reader["ErrorMessage"].ToString(),
-        //                Expression = reader["Expression"].ToString(),
-        //                //RuleExpressionType = reader["RuleExpressionType"]
-        //            };
-
-        //            rules.Add(rule);
-        //        }
-        //    }
-        //    return rules;
-        //}
+        
 
         public List<Demographic> Getdemographic()
         {

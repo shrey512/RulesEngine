@@ -8,7 +8,7 @@ using RuleEngineSaple;
 //RuleEvaluator.ExecuteDiscount();
 
 ////Eligiblity
-//RuleEvaluator.ExecuteEligibility();
+RuleEvaluator.ExecuteEligibility();
 
 ////Eligiblity Plus
 //RuleEvaluator.ExecuteEligibilityPlus();
@@ -37,7 +37,7 @@ namespace RuleEngineSample
             RulesEngineDbContext rulesEngineDbContext = new RulesEngineDbContext();
             //dBManager.displayworkflowtable();
             //dBManager.displayruletable();
-            dBManager.displaydemographic();
+            //dBManager.displaydemographic();
             dBManager.Getdemographic();
 
 
@@ -48,6 +48,14 @@ namespace RuleEngineSample
                 foreach (var item in demographic)
                 {
                     Console.WriteLine(item.First_Name);
+                }
+            }
+            if(rulesEngineDbContext != null)
+            {
+                var jsonrule = rulesEngineDbContext.GetjsonDataModels();
+                foreach (var item in jsonrule)
+                {
+                    Console.WriteLine(item.JsonData);
                 }
             }
 

@@ -32,12 +32,26 @@ namespace RuleEngineSample.Data
         }
 
         public DbSet<Demographic> Demographic { get; set; }
-        
+        public DbSet<JsonDataModel> JsonDataModels { get; set; }
+
 
 
         public List<Demographic> GetdemographicEF()
             {
                 return Demographic.ToList();
             }
+
+        public List<JsonDataModel> GetjsonDataModels()
+        {
+            return JsonDataModels.ToList();
+        }
     }
+
+    public class JsonDataModel
+    {
+        public int? Id { get; set; }
+        public string JsonData { get; set; }
+
+    }
+
 }

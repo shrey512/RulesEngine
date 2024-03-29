@@ -27,6 +27,11 @@ namespace RuleEngineSaple
             public string? gender { get; set; }
         }
 
+        public class JsonInputdata
+        {
+            public string? jsondata { get; set; }
+        }
+
         public static void ExecuteDiscount()
         {
             Console.WriteLine("Executing the discount rule.........");
@@ -68,12 +73,27 @@ namespace RuleEngineSaple
             
             string connectionstring = "Server=(localdb)\\mssqllocaldb;Database=RulesEngineEditorDB;Integrated Security=true;";
             RuleEngineDBManager dBManager = new RuleEngineDBManager(connectionstring);
-
             List<Demographic> demographics = dBManager.Getdemographic();
             Console.WriteLine("Executing the eligibility rule.........");
 
+            RulesEngineDbContext rulesEngineDbContext = new RulesEngineDbContext();
+            List<JsonDataModel> jsondatamodel = rulesEngineDbContext.GetjsonDataModels();
+
+            var jsoninput = new JsonInputdata
+            {
+                jsondata = null
+            };
+
+            foreach (JsonDataModel item in jsondatamodel)
+            {
+                if (item.Id == 1005)
+                {
+                    jsoninput.jsondata = item.JsonData;
+                }
+            }
+
             //read the json rule
-            string jsonRuleExpression = File.ReadAllText(@"./rules/eligibility.json");
+            string jsonRuleExpression = jsoninput.jsondata;
 
             //instantiate the rules engine 
             List<Workflow> workflow = JsonConvert.DeserializeObject<List<Workflow>>(jsonRuleExpression);
@@ -81,7 +101,6 @@ namespace RuleEngineSaple
 
             //determine the input -- this can be constants, LOVs, nested lists, output from SPs / Funcs, Scalar values, aggregate values etc. 
             
-
             var input1 = new Inputdata
             {
                 name = null,
@@ -117,7 +136,7 @@ namespace RuleEngineSaple
             }
 
             RuleParameter dependent = new RuleParameter("dependent", input2);
-
+       
 
             List<RuleResultTree> resultList = bre.ExecuteAllRulesAsync("Eligibility", member, dependent).Result;
             string memberEligibleFor = string.Empty;
