@@ -86,10 +86,20 @@ namespace RuleEngineSaple
 
             foreach (JsonDataModel item in jsondatamodel)
             {
-                if (item.Id == 1005)
+                var jsonworkflow = JsonConvert.DeserializeObject<List<Workflow>>(item.JsonData);
+
+                foreach(var wf in jsonworkflow)
                 {
-                    jsoninput.jsondata = item.JsonData;
+                    if(wf.WorkflowName == "Eligibility")
+                    {
+                        jsoninput.jsondata = item.JsonData;
+                    }
                 }
+
+                //if (item.Id == 1005)
+                //{
+                //    jsoninput.jsondata = item.JsonData;
+                //}
             }
 
             //read the json rule
