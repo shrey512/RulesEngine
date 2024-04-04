@@ -50,12 +50,20 @@ namespace RuleEngineSample
                     Console.WriteLine(item.First_Name);
                 }
             }
-            if(rulesEngineDbContext != null)
+            //if(rulesEngineDbContext != null)
+            //{
+            //    var jsonrule = rulesEngineDbContext.GetjsonDataModels();
+            //    foreach (var item in jsonrule)
+            //    {
+            //        Console.WriteLine(item.JsonData);
+            //    }
+            //}
+            if (rulesEngineDbContext != null)
             {
-                var jsonrule = rulesEngineDbContext.GetjsonDataModels();
-                foreach (var item in jsonrule)
+                var client = rulesEngineDbContext.GetClientModels();
+                foreach (var item in client)
                 {
-                    Console.WriteLine(item.JsonData);
+                    Console.WriteLine(item.Client);
                 }
             }
 

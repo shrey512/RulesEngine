@@ -33,6 +33,8 @@ namespace RuleEngineSample.Data
 
         public DbSet<Demographic> Demographic { get; set; }
         public DbSet<JsonDataModel> JsonDataModels { get; set; }
+        public DbSet<ClientModel> ClientTable { get; set; }
+
 
 
 
@@ -45,13 +47,25 @@ namespace RuleEngineSample.Data
         {
             return JsonDataModels.ToList();
         }
+
+        public List<ClientModel> GetClientModels()
+        {
+            return ClientTable.ToList();
+        }
     }
 
     public class JsonDataModel
     {
         public int? Id { get; set; }
-        public string JsonData { get; set; }
+        public string? JsonData { get; set; }
 
+    }
+
+    public class ClientModel
+    {
+        public int? Id { get; set; }
+        public string Client { get; set; }
+        public string WorkflowName { get; set; }
     }
 
 }
